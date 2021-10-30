@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-app-bar color="deep-purple accent-4" class="px-10" dense dark>
-      <v-toolbar-title>Page title </v-toolbar-title>
+      <v-toolbar-title @click="$router.push({ name: 'home' })"
+        >Page title
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
