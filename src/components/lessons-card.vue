@@ -66,15 +66,6 @@ export default {
           cart.push(this.data);
           this.$store.commit("setCart", cart);
         }
-        // cart.forEach((item) => {
-        //   if (item.id === this.data.id) {
-        //     item.qty = item.qty + 1;
-        //     this.$store.commit("setCart", cart);
-        //   }
-        // });
-        //     this.data.qty = 1;
-        //     cart.push(this.data);
-        //     this.$store.commit("setCart", cart);
       } else {
         this.data.qty = 1;
         cart.push(this.data);
