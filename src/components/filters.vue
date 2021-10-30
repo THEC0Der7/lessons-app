@@ -1,14 +1,14 @@
 <template>
   <div>
     <h3 class="h6 mb-0">Sort by</h3>
-    <v-radio-group class="mt-2" v-model="ex7" column>
+    <v-radio-group class="mt-2" v-model="selectedSortBy" column>
       <template v-for="(opt, idx) in sortBy">
         <v-radio :key="idx" :label="opt.label" :value="opt.value"></v-radio>
       </template>
     </v-radio-group>
 
     <h3 class="h6 mb-0">Order by</h3>
-    <v-radio-group class="mt-2" v-model="ex7" column>
+    <v-radio-group class="mt-2" v-model="selectedOrderBy" column>
       <template v-for="(opt, idx) in orderBy">
         <v-radio :key="idx" :label="opt.label" :value="opt.value"></v-radio>
       </template>
@@ -21,6 +21,8 @@ export default {
   name: "filters",
   data() {
     return {
+      selectedSortBy: null,
+      selectedOrderBy: null,
       sortBy: [
         {
           label: "Subjects",

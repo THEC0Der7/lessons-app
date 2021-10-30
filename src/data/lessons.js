@@ -1,5 +1,6 @@
 const lessons = [
 {
+    id: 1,
     subject: "English Writing",
     location: "London",
     price: "150",
@@ -8,6 +9,7 @@ const lessons = [
     Image: "https://picsum.photos/id/180/500/500",
 },
 {
+    id: 2,
     subject: "English Writing",
     location: "USA",
     price: "100",
@@ -16,6 +18,7 @@ const lessons = [
     Image: "https://picsum.photos/id/182/500/500",
 },
 {
+    id: 3,
     subject: "Math",
     location: "England",
     price: "200",
@@ -24,6 +27,7 @@ const lessons = [
     Image: "https://picsum.photos/id/184/500/500",
 },
 {
+    id: 4,
     subject: "Physics",
     location: "London",
     price: "300",
@@ -32,6 +36,7 @@ const lessons = [
     Image: "https://picsum.photos/id/185/500/500",
 },
 {
+    id: 5,
     subject: "Physics",
     location: "USA",
     price: "320",
@@ -40,6 +45,7 @@ const lessons = [
     Image: "https://picsum.photos/id/188/500/500",
 },
 {
+    id: 6,
     subject: "Computer",
     location: "Canada",
     price: "120",

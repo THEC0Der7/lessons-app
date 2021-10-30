@@ -24,7 +24,7 @@
     </v-list>
 
     <v-card-actions>
-      <v-btn color="primary" text> Add to cart </v-btn>
+      <v-btn color="primary" @click="addToCart" text> Add to cart </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -41,8 +41,48 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    cart() {
+      return this.$store.getters.getCart;
+    },
+  },
+  methods: {
+    addToCart() {
+      let cart = this.cart;
+      if (this.cart.length > 0) {
+        let saa = cart
+          .filter((item) => {
+            return item.id === this.data.id;
+          })
+          .map((item) => {
+            item.qty = item.qty + 1;
+            return item;
+          });
+
+        if (saa.length > 0) {
+          this.$store.commit("setCart", cart);
+        } else {
+          this.data.qty = 1;
+          cart.push(this.data);
+          this.$store.commit("setCart", cart);
+        }
+        // cart.forEach((item) => {
+        //   if (item.id === this.data.id) {
+        //     item.qty = item.qty + 1;
+        //     this.$store.commit("setCart", cart);
+        //   }
+        // });
+        //     this.data.qty = 1;
+        //     cart.push(this.data);
+        //     this.$store.commit("setCart", cart);
+      } else {
+        this.data.qty = 1;
+        cart.push(this.data);
+        this.$store.commit("setCart", cart);
+      }
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
