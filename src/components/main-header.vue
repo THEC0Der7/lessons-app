@@ -1,12 +1,14 @@
 <template>
   <div>
-    <v-app-bar color="deep-purple accent-4" dense dark>
+    <v-app-bar color="deep-purple accent-4" class="px-10" dense dark>
       <v-toolbar-title>Page title</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
       <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
+        <v-badge :content="1" :value="true" color="red" overlap>
+          <v-icon>mdi-cart</v-icon>
+        </v-badge>
       </v-btn>
     </v-app-bar>
   </div>

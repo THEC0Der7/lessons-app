@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <main-header />
-    <v-main class="mt-5">
+    <v-main class="my-5">
       <router-view />
     </v-main>
   </v-app>
