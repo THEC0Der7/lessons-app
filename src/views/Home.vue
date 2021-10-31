@@ -33,6 +33,7 @@ export default {
   data() {
     return {
       filter: null,
+      sear: "",
     };
   },
 
@@ -43,6 +44,10 @@ export default {
 
     filters() {
       return this.$store.getters.getFilters;
+    },
+
+    search() {
+      return this.$store.getters.getSearch;
     },
 
     filterLessons() {
@@ -69,11 +74,36 @@ export default {
         };
       }
       if (this.filter) {
-        return lessons.sort(
+        let sorted = lessons.sort(
           compareValues(this.filter.sort_by, this.filter.order_by)
         );
+
+        let s = [...this.sear.toLowerCase()];
+
+        if (this.sear !== "") {
+          return sorted.filter(function (f) {
+            const tags = [
+              ...f.subject.toLowerCase(),
+              ...f.location.toLowerCase(),
+            ];
+            return s.every((f) => tags.includes(f));
+          });
+        } else {
+          return sorted;
+        }
       } else {
-        return lessons;
+        let s = [...this.sear.toLowerCase()];
+        if (this.sear !== "") {
+          return lessons.filter(function (f) {
+            const tags = [
+              ...f.subject.toLowerCase(),
+              ...f.location.toLowerCase(),
+            ];
+            return s.every((f) => tags.includes(f));
+          });
+        } else {
+          return lessons;
+        }
       }
     },
   },
@@ -81,6 +111,9 @@ export default {
   watch: {
     filters(f) {
       this.filter = f;
+    },
+    search(s) {
+      this.sear = s;
     },
   },
 };
