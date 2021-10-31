@@ -9,6 +9,7 @@
               <template v-for="(item, idx) in cart">
                 <cart-card :key="idx" :data="item" />
               </template>
+              <p v-if="cart.length <= 0" class="text-center">Empty Cart</p>
             </v-card-text>
           </v-card>
         </v-col>

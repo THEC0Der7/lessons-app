@@ -50,7 +50,7 @@ export default {
     addToCart() {
       let cart = this.cart;
       if (this.cart.length > 0) {
-        let saa = cart
+        let c = cart
           .filter((item) => {
             return item.id === this.data.id;
           })
@@ -59,7 +59,7 @@ export default {
             return item;
           });
 
-        if (saa.length > 0) {
+        if (c.length > 0) {
           this.$store.commit("setCart", cart);
         } else {
           this.data.qty = 1;
