@@ -14,7 +14,7 @@
             <strong>Price:</strong> ${{ data.price }}
           </v-list-item-title>
           <v-list-item-title>
-            <strong>Spaces available:</strong> {{ data.space }}
+            <strong>Spaces available:</strong> {{ data.space - spacesInCart }}
           </v-list-item-title>
         </v-list-item-content>
         <div>
@@ -24,7 +24,14 @@
     </v-list>
 
     <v-card-actions>
-      <v-btn color="primary" @click="addToCart" text> Add to cart </v-btn>
+      <v-btn
+        :disabled="data.space - spacesInCart === 0"
+        color="primary"
+        @click="addToCart"
+        text
+      >
+        Add to cart
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -44,6 +51,28 @@ export default {
   computed: {
     cart() {
       return this.$store.getters.getCart;
+    },
+    spacesInCart() {
+      if (this.$store.getters.getCart.length !== 0) {
+        const items = this.$store.getters.getCart;
+        const lessonId = this.data.id;
+
+        let fitems = items
+          .filter((item) => {
+            return item.id === lessonId;
+          })
+          .map((item) => {
+            return item.qty;
+          });
+
+        if (fitems.length > 0) {
+          return fitems[0];
+        } else {
+          return 0;
+        }
+      } else {
+        return 0;
+      }
     },
   },
   methods: {
