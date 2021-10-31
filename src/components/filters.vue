@@ -26,7 +26,7 @@ export default {
       sortBy: [
         {
           label: "Subjects",
-          value: "subjects",
+          value: "subject",
         },
         {
           label: "Location",
@@ -38,20 +38,41 @@ export default {
         },
         {
           label: "Availability",
-          value: "availability",
+          value: "space",
         },
       ],
       orderBy: [
         {
           label: "Ascending",
-          value: "ascending",
+          value: "asc",
         },
         {
           label: "Descending",
-          value: "descending",
+          value: "desc",
         },
       ],
     };
+  },
+  watch: {
+    selectedSortBy(f) {
+      this.selectedOrderBy = this.selectedOrderBy
+        ? this.selectedOrderBy
+        : "asc";
+      let payload = {
+        sort_by: f,
+        order_by: this.selectedOrderBy,
+      };
+      this.$store.commit("setFilters", payload);
+    },
+    selectedOrderBy(f) {
+      if (this.selectedSortBy !== null) {
+        let payload = {
+          sort_by: this.selectedSortBy,
+          order_by: f,
+        };
+        this.$store.commit("setFilters", payload);
+      }
+    },
   },
 };
 </script>
