@@ -15,7 +15,10 @@
         </v-col>
         <v-col cols="5">
           <v-card class="rounded-lg" outlined>
-            <v-card-title>Checkout</v-card-title>
+            <v-card-title class="pb-1">Checkout</v-card-title>
+            <v-card-text>
+              <check-out />
+            </v-card-text>
           </v-card>
         </v-col>
       </v-row>
@@ -25,9 +28,10 @@
 
 <script>
 import CartCard from "../components/cart-card.vue";
+import CheckOut from "../components/check-out.vue";
 export default {
   name: "cart",
-  components: { CartCard },
+  components: { CartCard, CheckOut },
   data() {
     return {};
   },
